@@ -1,6 +1,6 @@
 name: Github Workflows Test
 run-name: ${{github.actor}} is doing the test
-on: [push] [pull]
+on: [push, pull_request]
 jobs:
   test-gh-actions:
     runs-on: ubuntu-latest
