@@ -12,6 +12,6 @@ jobs:
          with:
            distribution: temurin
            java-version: 26
-       - run: mvn clean install
+       - run: cd ./assignment_4 && mvn clean install
       
 
