@@ -1,0 +1,20 @@
+name: Github Workflows Test
+run-name: ${{github.actor}} is doing the test
+on: [push] [pull]
+jobs:
+  test-gh-actions:
+    runs-on: ubuntu-latest
+    steps:
+        - run: echo "Benjamin Novak is chill (sometimes)"
+        - run: echo "lies"
+        - run: echo "okay, actually testing out functionality now"
+        - run: echo "github.event_name = ${{github.event_name}}"
+        - run: echo "runner.os = ${{runner.os}}"
+        - run: echo "github.ref = ${{github.ref}}"
+        - name: check out repo code
+          uses: actions/checkout@v6
+        - run: echo "apparently the repo ${{ github.repository }} has been cloned to the runner, which I believe is just synonymous with VM"
+        - run: echo "testing out ls function on github.workspace:"
+        - run: ls ${{ github.workspace }}
+      
+
