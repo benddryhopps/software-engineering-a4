@@ -1,3 +1,1 @@
-Hi all!
-
-this is going to be the readme for the initial commit, and potentially later ones, if this file is not updated frequently.
+Going to try doing it through sqlite and jdbc, so that hopefully the assessors think that we're cool.
