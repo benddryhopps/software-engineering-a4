@@ -23,8 +23,8 @@ public class Driver{
             String country,
             String dob,
             int experienceYears,
-            String licenseType) {
-
+            String licenseType){
+	System.out.println("Initialising Driver instance...");
         this.driverID = driverID;
         this.name = name;
         this.streetNumber = streetNumber;
@@ -35,6 +35,7 @@ public class Driver{
         this.dob = dob;
         this.experienceYears = experienceYears;
         this.licenseType = licenseType;
+	System.out.println(this + " has been initialised succesfully!");
     }
 
     public String getDriverID() {

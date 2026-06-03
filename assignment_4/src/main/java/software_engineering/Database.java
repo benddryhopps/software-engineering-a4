@@ -7,6 +7,11 @@ import java.util.List;
 
 public class Database {
 
+	public Database(){
+		System.out.println("Initialising Database instance...");
+		System.out.println(this + " has been initialised succesfully!");
+	}
+
 	private static final String URL="jdbc:sqlite:app.db";
 
 	public Connection connect() throws SQLException {
