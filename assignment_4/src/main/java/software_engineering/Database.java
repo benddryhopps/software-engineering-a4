@@ -228,8 +228,33 @@ public class Database {
 				}
 		} catch(SQLException e){
 			System.out.println(e);
+		}
+
 	}
 
-}
+	public void addBus() {
+    Scanner scanner = new Scanner(System.in);
+
+    String busID;
+    while (true) {
+        System.out.print("Bus ID (8 digits, unique, or type 'exit'): ");
+        busID = scanner.nextLine();
+        if (busID.equalsIgnoreCase("exit")) return;
+        if (!ValidationClass.validBusIdString(busID)) {
+            System.out.println("Invalid Bus ID format.");
+            continue;
+        }
+		try{
+			Connection connection = this.connect();
+			if (ValidationClass.busExists(connection, busID)) {
+				System.out.println("Bus ID already exists.");
+				continue;
+			}
+			break;
+		} catch(SQLException e){
+			System.out.println(e);
+		}
+	    }
+	}
 }
 
