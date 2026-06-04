@@ -305,4 +305,81 @@ public class Database {
 				System.out.println(e);
 			}
 		}
+
+	public void updateBusCapacity() {
+    	Scanner scanner = new Scanner(System.in);
+
+		try{Connection connection = this.connect();
+			String busID;
+			while (true) {
+				System.out.print("Bus ID to update (or type 'exit'): ");
+				busID = scanner.nextLine();
+				if (busID.equalsIgnoreCase("exit")) return;
+				if (ValidationClass.busExists(connection, busID)) break;
+				System.out.println("Bus not found.");
+			}
+
+			int newCapacity = 0;
+			int oldCapacity = 0;
+
+			try (Connection conn = connect()) {
+				PreparedStatement selectStmt = conn.prepareStatement("SELECT capacity FROM busRepo WHERE busId=?");
+				selectStmt.setString(1, busID);
+				ResultSet rs = selectStmt.executeQuery();
+				if (rs.next()) {
+					oldCapacity = rs.getInt("capacity");
+				}
+
+				while (true) {
+					System.out.print("New Capacity: ");
+					String input = scanner.nextLine();
+					if (input.equalsIgnoreCase("exit")) return;
+					try {
+						newCapacity = Integer.parseInt(input);
+						if (ValidationClass.validCapacityUpdate(busID, newCapacity, oldCapacity)) break;
+					} catch (NumberFormatException e) {
+						System.out.println("Enter a valid integer.");
+					}
+				}
+
+				PreparedStatement updateStmt = conn.prepareStatement("UPDATE busRepo SET capacity=? WHERE busId=?");
+				updateStmt.setInt(1, newCapacity);
+				updateStmt.setString(2, busID);
+				updateStmt.executeUpdate();
+				System.out.println("Bus capacity updated successfully.");
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			} catch(SQLException e){
+				e.printStackTrace();
+			}
+	}
+
+
+	public void deleteBus() {
+	
+		Scanner scanner = new Scanner(System.in);
+		try{Connection connection = this.connect();
+			String busID;
+			while (true) {
+				System.out.print("Bus ID to delete (or type 'exit'): ");
+				busID = scanner.nextLine();
+				if (busID.equalsIgnoreCase("exit")) return;
+				if (ValidationClass.busExists(connection, busID)) break;
+				System.out.println("Bus not found.");
+			}
+
+			try (Connection conn = connect()) {
+				PreparedStatement stmt = conn.prepareStatement("DELETE FROM busRepo WHERE busId=?");
+				stmt.setString(1, busID);
+				stmt.executeUpdate();
+				System.out.println("Bus deleted successfully.");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+}
 }
