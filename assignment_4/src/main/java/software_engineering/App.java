@@ -26,7 +26,7 @@ public class App
 		}
 		try {
 			Connection dbConnection = db.connect();
-			String sql = "SELECT * FROM driver";
+			String sql = "SELECT * FROM drivers";
 			Statement statement = dbConnection.createStatement();
 			statement.execute(sql);
 			ResultSet resultSet = statement.getResultSet();
