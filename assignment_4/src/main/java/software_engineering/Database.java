@@ -121,7 +121,88 @@ public class Database {
 
     } catch (SQLException e) {
         e.printStackTrace();
+	    }
+	}
+
+	public void updateDriver() {
+    Scanner scanner = new Scanner(System.in);
+	try{
+		Connection connection = this.connect();
+
+		String driverID;
+		while (true) {
+			System.out.print("Driver ID to update (or type 'exit'): ");
+			driverID = scanner.nextLine();
+			if (driverID.equalsIgnoreCase("exit")) return;
+			if (ValidationClass.driverExists(connection, driverID)) break;
+			System.out.println("Driver not found.");
+		}
+
+    try (Connection conn = connect()) {
+        PreparedStatement selectStmt = conn.prepareStatement(
+                "SELECT * FROM drivers WHERE driverID=?");
+        selectStmt.setString(1, driverID);
+        ResultSet rs = selectStmt.executeQuery();
+        if (!rs.next()) return;
+
+        int experienceYears = rs.getInt("experienceYears");
+        String currentLicense = rs.getString("licenseType");
+
+        // Address input
+        String address;
+        String[] addressParts;
+        while (true) {
+            System.out.print("New Address (StreetNumber|StreetName|City|State|Country): ");
+            address = scanner.nextLine();
+            if (address.equalsIgnoreCase("exit")) return;
+            if (ValidationClass.validAddress(address)) {
+                addressParts = address.split("\\|");
+                break;
+            }
+            System.out.println("Invalid address format.");
+        }
+
+        // DOB input
+        String dob;
+        while (true) {
+            System.out.print("New DOB (DD-MM-YYYY): ");
+            dob = scanner.nextLine();
+            if (dob.equalsIgnoreCase("exit")) return;
+            if (ValidationClass.validDOB(dob)) break;
+            System.out.println("Invalid DOB format.");
+        }
+
+        // License update restriction
+        String licenseType = currentLicense;
+        if (experienceYears <= 10) {
+            System.out.print("New License Type (leave blank to keep current): ");
+            String input = scanner.nextLine();
+            if (!input.equalsIgnoreCase("exit") && !input.isEmpty()) {
+                licenseType = input;
+            }
+        } else {
+            System.out.println("License cannot be changed for drivers with >10 years experience.");
+        }
+
+        PreparedStatement updateStmt = conn.prepareStatement(
+                "UPDATE drivers SET streetNumber=?, streetName=?, city=?, state=?, country=?, dob=?, licenseType=? WHERE driverID=?");
+        updateStmt.setString(1, addressParts[0]);
+        updateStmt.setString(2, addressParts[1]);
+        updateStmt.setString(3, addressParts[2]);
+        updateStmt.setString(4, addressParts[3]);
+        updateStmt.setString(5, addressParts[4]);
+        updateStmt.setString(6, dob);
+        updateStmt.setString(7, licenseType);
+        updateStmt.setString(8, driverID);
+        updateStmt.executeUpdate();
+        System.out.println("Driver updated successfully.");
+
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
-}
+} catch(SQLException e){
+	System.out.println(e);
+	}
+	}
 }
 

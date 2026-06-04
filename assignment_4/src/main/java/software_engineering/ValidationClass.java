@@ -1,4 +1,5 @@
 package software_engineering;
+import java.sql.*;
 
 public class ValidationClass{
 
@@ -77,8 +78,66 @@ public class ValidationClass{
                return false;
            }   
                return true;
-       }
+      }
+
+        public static boolean driverExists(Connection conn, String driverID) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement(
+                "SELECT driverID FROM drivers WHERE driverID=?"
+            );
+            stmt.setString(1, driverID);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean busExists(Connection conn, String busID) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement(
+                "SELECT busId FROM busRepo WHERE busId=?"
+            );
+            stmt.setString(1, busID);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean driverOlderThan50(String dob) {
+        try {
+            String[] parts = dob.split("-");
+            int day = Integer.parseInt(parts[0]);
+            int month = Integer.parseInt(parts[1]);
+            int year = Integer.parseInt(parts[2]);
+
+            java.time.LocalDate birthDate = java.time.LocalDate.of(year, month, day);
+            java.time.LocalDate today = java.time.LocalDate.now();
+            int age = today.getYear() - birthDate.getYear();
+            if (today.getDayOfYear() < birthDate.getDayOfYear()) {
+                age--;
+            }
+            return age > 50;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static boolean driverHasMinExperience(int experienceYears, int minYears) {
+        return experienceYears >= minYears;
+    }
+
+    public static boolean driverLicenseAllows(String licenseType) {
+        return licenseType.equalsIgnoreCase("Heavy") ||
+               licenseType.equalsIgnoreCase("Public Transport");
+    }
 
 }
+
+
 
 	
