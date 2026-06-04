@@ -585,6 +585,38 @@ public class Database {
     } catch (SQLException e) {
         e.printStackTrace();
     }
-}
+	}
+
+	// Adding in a busExists and driverExists method to this class instead of validation class
+	// even though I am keeping in validationClass's method for it so that I don't have to rewrite (not enough time)
+	// its just gonna be a massive pain in the ass for me to keep wrapping those crazy nested try-catch blocks.
+
+	public boolean driverExists(String driverID) {
+    try (Connection conn = connect();
+         PreparedStatement stmt = conn.prepareStatement(
+                 "SELECT 1 FROM drivers WHERE driverID=?")) {
+        stmt.setString(1, driverID);
+        ResultSet rs = stmt.executeQuery();
+        return rs.next();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return false;
+    }
+
+	public boolean busExists(String busID) {
+    try (Connection conn = connect();
+         PreparedStatement stmt = conn.prepareStatement(
+                 "SELECT 1 FROM busRepo WHERE busId=?")) {
+        stmt.setString(1, busID);
+        ResultSet rs = stmt.executeQuery();
+        return rs.next();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return false;
+	 }
+
+
 }
 
