@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="software_engineering.AppTest" time="0.039" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="software_engineering.DatabaseTest" time="0.409" tests="9" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -64,5 +64,68 @@
     <property name="maven.repo.local" value="C:\Users\HUNGDEPZAI\.m2\repository"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="software_engineering.AppTest" time="0.018"/>
+  <testcase name="driverCount_returnsCorrectNumber" classname="software_engineering.DatabaseTest" time="0.294">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@179ece50 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@62ddbd7e has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="assignDriver_fails_when_driver_missing" classname="software_engineering.DatabaseTest" time="0.02">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@63a12c68 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@28f3b248 has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="capacity_update_increase_rejected" classname="software_engineering.DatabaseTest" time="0.004">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@156b88f5 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@3bf9ce3e has been initialised succesfully!
+Capacity cannot increase.
+]]></system-out>
+  </testcase>
+  <testcase name="driverDelete_removesDriver" classname="software_engineering.DatabaseTest" time="0.018">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@383bfa16 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@4d465b11 has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="busCount_returnsCorrectNumber" classname="software_engineering.DatabaseTest" time="0.015">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@7133da86 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@3232a28a has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="busDelete_removesBus" classname="software_engineering.DatabaseTest" time="0.016">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@47faa49c has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@28f2a10f has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="busInsert_persistsCorrectly" classname="software_engineering.DatabaseTest" time="0.013">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@6da21078 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@7fee8714 has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="capacity_update_decrease_allowed" classname="software_engineering.DatabaseTest" time="0.003">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@56cdfb3b has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@2b91004a has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="driverInsert_persistsCorrectly" classname="software_engineering.DatabaseTest" time="0.013">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@2fb3536e has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@169e6180 has been initialised succesfully!
+]]></system-out>
+  </testcase>
 </testsuite>

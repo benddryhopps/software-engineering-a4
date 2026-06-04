@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="software_engineering.ValidationClassTest" time="0.035" tests="11" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="software_engineering.ValidationClassTest" time="0.04" tests="25" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Users\HUNGDEPZAI\.jdks\openjdk-26.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\HUNGDEPZAI\AppData\Local\Temp\surefire17434240784982489444\surefirebooter-20260604225433666_3.jar C:\Users\HUNGDEPZAI\AppData\Local\Temp\surefire17434240784982489444 2026-06-04T22-54-33_447-jvmRun1 surefire-20260604225433666_1tmp surefire_0-20260604225433666_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\HUNGDEPZAI\AppData\Local\Temp\surefire9820537237506336301\surefirebooter-20260604230406840_3.jar C:\Users\HUNGDEPZAI\AppData\Local\Temp\surefire9820537237506336301 2026-06-04T23-04-06_753-jvmRun1 surefire-20260604230406840_1tmp surefire_0-20260604230406840_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\HUNGDEPZAI\Desktop\software-engineering-a4\assignment_4\target\test-classes;C:\Users\HUNGDEPZAI\Desktop\software-engineering-a4\assignment_4\target\classes;C:\Users\HUNGDEPZAI\.m2\repository\org\junit\jupiter\junit-jupiter\5.13.0\junit-jupiter-5.13.0.jar;C:\Users\HUNGDEPZAI\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.13.0\junit-jupiter-api-5.13.0.jar;C:\Users\HUNGDEPZAI\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\HUNGDEPZAI\.m2\repository\org\junit\platform\junit-platform-commons\1.13.0\junit-platform-commons-1.13.0.jar;C:\Users\HUNGDEPZAI\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\HUNGDEPZAI\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.13.0\junit-jupiter-params-5.13.0.jar;C:\Users\HUNGDEPZAI\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.13.0\junit-jupiter-engine-5.13.0.jar;C:\Users\HUNGDEPZAI\.m2\repository\org\junit\platform\junit-platform-engine\1.13.0\junit-platform-engine-1.13.0.jar;C:\Users\HUNGDEPZAI\.m2\repository\org\xerial\sqlite-jdbc\3.50.3.0\sqlite-jdbc-3.50.3.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\HUNGDEPZAI\AppData\Local\Temp\surefire17434240784982489444\surefirebooter-20260604225433666_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\HUNGDEPZAI\AppData\Local\Temp\surefire9820537237506336301\surefirebooter-20260604230406840_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="26.0.1+8-34"/>
@@ -64,28 +64,32 @@
     <property name="maven.repo.local" value="C:\Users\HUNGDEPZAI\.m2\repository"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="testValidDriverId_invalidFirstTwoDigits" classname="software_engineering.ValidationClassTest" time="0.003"/>
-  <testcase name="testValidDOB_normal" classname="software_engineering.ValidationClassTest" time="0.003"/>
-  <testcase name="testValidDOB_edgeShort" classname="software_engineering.ValidationClassTest" time="0.002"/>
-  <testcase name="testValidAddress_invalidMissingSection" classname="software_engineering.ValidationClassTest" time="0.001"/>
-  <testcase name="testValidBusId_normal" classname="software_engineering.ValidationClassTest" time="0.003"/>
-  <testcase name="testValidDOB_invalidSlashes" classname="software_engineering.ValidationClassTest" time="0.001"/>
-  <testcase name="testValidDriverId_normal" classname="software_engineering.ValidationClassTest" time="0.003"/>
-  <testcase name="testValidDriverId_edgeOneSpecialChar" classname="software_engineering.ValidationClassTest" time="0.004">
-    <failure message="expected: &lt;false&gt; but was: &lt;true&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertFalse.failNotFalse(AssertFalse.java:63)
-	at org.junit.jupiter.api.AssertFalse.assertFalse(AssertFalse.java:36)
-	at org.junit.jupiter.api.AssertFalse.assertFalse(AssertFalse.java:31)
-	at org.junit.jupiter.api.Assertions.assertFalse(Assertions.java:231)
-	at software_engineering.ValidationClassTest.testValidDriverId_edgeOneSpecialChar(ValidationClassTest.java:27)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
-]]></failure>
+  <testcase name="driverHasMinExperience_acceptsMinYears" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="validDriverId_acceptsValidId" classname="software_engineering.ValidationClassTest" time="0.003"/>
+  <testcase name="validDriverId_rejectsShortId" classname="software_engineering.ValidationClassTest" time="0.004"/>
+  <testcase name="validDOB_rejectsWrongSeparator" classname="software_engineering.ValidationClassTest" time="0.0"/>
+  <testcase name="validAddress_rejectsTooManyFields" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="driverOlderThan50_acceptsYounger" classname="software_engineering.ValidationClassTest" time="0.006"/>
+  <testcase name="validBusId_rejectsNonDigitId" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="validDOB_rejectsLongDate" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="validAddress_acceptsCorrectFormat" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="validAddress_rejectsTooFewFields" classname="software_engineering.ValidationClassTest" time="0.0"/>
+  <testcase name="driverOlderThan50_rejectsBusCapacity50OrMore" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="driverHasMinExperience_rejectsBelowMin" classname="software_engineering.ValidationClassTest" time="0.002"/>
+  <testcase name="validBusId_rejectsLongId" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="driverLicenseAllows_acceptsPublicTransport" classname="software_engineering.ValidationClassTest" time="0.0"/>
+  <testcase name="validDOB_acceptsCorrectFormat" classname="software_engineering.ValidationClassTest" time="0.0"/>
+  <testcase name="validDriverId_rejectsLongId" classname="software_engineering.ValidationClassTest" time="0.0"/>
+  <testcase name="validBusId_rejectsShortId" classname="software_engineering.ValidationClassTest" time="0.0"/>
+  <testcase name="driverLicenseAllows_acceptsHeavy" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="validDOB_rejectsShortDate" classname="software_engineering.ValidationClassTest" time="0.0"/>
+  <testcase name="driverLicenseAllows_rejectsOther" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="capacityUpdate_rejectsIncrease" classname="software_engineering.ValidationClassTest" time="0.001">
+    <system-out><![CDATA[Capacity cannot increase.
+]]></system-out>
   </testcase>
-  <testcase name="testValidAddress_normal" classname="software_engineering.ValidationClassTest" time="0.001"/>
-  <testcase name="testValidAddress_edgeExtraInfo" classname="software_engineering.ValidationClassTest" time="0.001"/>
-  <testcase name="testValidBusId_invalid" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="capacityUpdate_allowsSame" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="capacityUpdate_allowsDecrease" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="validDriverId_rejectsInvalidEndUppercase" classname="software_engineering.ValidationClassTest" time="0.001"/>
+  <testcase name="validBusId_acceptsValid8DigitId" classname="software_engineering.ValidationClassTest" time="0.0"/>
 </testsuite>
