@@ -28,6 +28,74 @@ public class Database {
 
 	}
 
+	public void seedDatabase() {
+    seedDrivers();
+    seedBuses();
+	}
+
+	private void seedDrivers() {
+		String sql = "INSERT OR IGNORE INTO drivers " +
+				"(driverID, name, streetNumber, streetName, city, state, country, dob, experienceYears, licenseType) " +
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		try (Connection conn = connect();
+			PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, "DR12345678");
+			pstmt.setString(2, "John Smith");
+			pstmt.setString(3, "12");
+			pstmt.setString(4, "Queen St");
+			pstmt.setString(5, "Melbourne");
+			pstmt.setString(6, "VIC");
+			pstmt.setString(7, "Australia");
+			pstmt.setString(8, "10-05-1985");
+			pstmt.setInt(9, 12);
+			pstmt.setString(10, "Heavy");
+			pstmt.executeUpdate();
+			pstmt.setString(1, "DR87654321");
+			pstmt.setString(2, "Emily Brown");
+			pstmt.setString(3, "45");
+			pstmt.setString(4, "Collins St");
+			pstmt.setString(5, "Melbourne");
+			pstmt.setString(6, "VIC");
+			pstmt.setString(7, "Australia");
+			pstmt.setString(8, "22-11-1990");
+			pstmt.setInt(9, 5);
+			pstmt.setString(10, "Light");
+
+			pstmt.executeUpdate();
+
+			System.out.println("Sample drivers inserted.");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void seedBuses() {
+		String sql = "INSERT OR IGNORE INTO busRepo (busId, capacity, fuelLevel, fuelType) " +
+				"VALUES (?, ?, ?, ?)";
+
+		try (Connection conn = connect();
+			PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			pstmt.setString(1, "BUS10001");
+			pstmt.setInt(2, 45);
+			pstmt.setDouble(3, 75.5);
+			pstmt.setString(4, "Diesel");
+			pstmt.executeUpdate();
+
+			pstmt.setString(1, "BUS10002");
+			pstmt.setInt(2, 30);
+			pstmt.setDouble(3, 90.0);
+			pstmt.setString(4, "Electricity");
+			pstmt.executeUpdate();
+
+			System.out.println("Sample buses inserted.");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void executeStatement(String sql){
 		try{
 		Connection conn = connect();
@@ -385,33 +453,79 @@ public class Database {
 
 	public void countDrivers() {
     String sql = "SELECT COUNT(*) FROM drivers";
-
     try (Connection conn = connect();
          PreparedStatement stmt = conn.prepareStatement(sql);
          ResultSet rs = stmt.executeQuery()) {
-
         if (rs.next()) {
             System.out.println("Total drivers: " + rs.getInt(1));
         }
-
     } catch (SQLException e) {
         e.printStackTrace();
     }
-}
+ }
 
-public void countBuses() {
-    String sql = "SELECT COUNT(*) FROM busRepo";
+	public void countBuses() {
+	    String sql = "SELECT COUNT(*) FROM busRepo";
+	    try (Connection conn = connect();
+	         PreparedStatement stmt = conn.prepareStatement(sql);
+	         ResultSet rs = stmt.executeQuery()) {
+	        if (rs.next()) {
+	            System.out.println("Total buses: " + rs.getInt(1));
+	        }
 
-    try (Connection conn = connect();
-         PreparedStatement stmt = conn.prepareStatement(sql);
-         ResultSet rs = stmt.executeQuery()) {
-
-        if (rs.next()) {
-            System.out.println("Total buses: " + rs.getInt(1));
-        }
-
-    } catch (SQLException e) {
+	    } catch (SQLException e) {
         e.printStackTrace();
     }
 	}
+
+	public ResultSet selectAll(String tableName) {
+	    String sql = "SELECT * FROM " + tableName;
+	    try {
+	        Connection conn = connect();
+	        Statement stmt = conn.createStatement();
+	        return stmt.executeQuery(sql);
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+    return null;
+	}
+
+
+	public void printTable(String tableName) {
+    try {
+        ResultSet rs = selectAll(tableName);
+        if (rs == null) return;
+        ResultSetMetaData meta = rs.getMetaData();
+        int columns = meta.getColumnCount();
+        for (int i = 1; i <= columns; i++) {
+            System.out.print(meta.getColumnName(i) + "\t");
+        }
+        System.out.println();
+        while (rs.next()) {
+            for (int i = 1; i <= columns; i++) {
+                System.out.print(rs.getString(i) + "\t");
+            }
+            System.out.println();
+        }
+        rs.getStatement().getConnection();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+

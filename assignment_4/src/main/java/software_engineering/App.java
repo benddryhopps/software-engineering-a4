@@ -7,6 +7,7 @@ public class App
 	Database db = new Database();
 	db.createDriverRepository();
 	db.createBusRepository();
+	db.seedDatabase();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -39,9 +40,11 @@ public class App
             System.out.println("1. Add Driver");
             System.out.println("2. Update Driver");
             System.out.println("3. Delete Driver");
-            System.out.println("4. Back to Main Menu");
+            System.out.println("4. Count Drivers");
+			System.out.println("5. List all records");
+			System.out.println("6. Exit");
 
-            int action = getValidatedChoice(scanner, 1, 4);
+            int action = getValidatedChoice(scanner, 1, 6);
 
             switch (action) {
                 case 1:
@@ -54,7 +57,13 @@ public class App
                     db.deleteDriver();
                     break;
                 case 4:
-                    return;
+                    db.countDrivers();
+					break;
+				case 5:
+					db.printTable("drivers");
+					break;
+				case 6:
+					return;
             }
         }
     }
@@ -65,10 +74,10 @@ public class App
             System.out.println("1. Add Bus");
             System.out.println("2. Update Bus Capacity");
             System.out.println("3. Delete Bus");
-            System.out.println("4. Back to Main Menu");
-
-            int action = getValidatedChoice(scanner, 1, 4);
-
+            System.out.println("4. Count Buses.");
+			System.out.println("5. List all records");
+			System.out.println("6. Exit");
+            int action = getValidatedChoice(scanner, 1, 6);
             switch (action) {
                 case 1:
                     db.addBus();
@@ -80,14 +89,17 @@ public class App
                     db.deleteBus();
                     break;
                 case 4:
-                    return;
+					db.countBuses();
+					break;
+				case 5:
+					db.printTable("busRepo");
+					break;
+				case 6:
+					return;
             }
         }
     }
 
-    /**
-     * Prompts the user until a valid integer between min and max is entered.
-     */
     private static int getValidatedChoice(Scanner scanner, int min, int max) {
         int choice;
         while (true) {
@@ -106,36 +118,5 @@ public class App
         }
     }
 
-	// try{
-		// Connection dbConnection = db.connect();
-		// String sql = "INSERT INTO drivers (driverID, name, streetNumber, streetName, city, state, country, dob, experienceYears, licenseType)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		// PreparedStatement preparedStatement = dbConnection.prepareStatement(sql);
-		// preparedStatement.setString(1, "123456789");
-		// preparedStatement.setString(2, "Benjamin Novak");
-		// preparedStatement.setInt(3, 12 );
-		// preparedStatement.setString(4, "exampleStreet");
-		// preparedStatement.setString(5, "exampleCity");
-		// preparedStatement.setString(6, "exampleState");
-		// preparedStatement.setString(7, "exampleCountry");
-		// preparedStatement.setString(8, "01-01-01");
-		// preparedStatement.setInt(9, 1);
-		// preparedStatement.setString(10, "heavy");
-		// } catch(SQLException e){
-			// System.out.println(e);
-		// }
-		// try {
-			// Connection dbConnection = db.connect();
-			// String sql = "SELECT * FROM drivers";
-			// Statement statement = dbConnection.createStatement();
-			// statement.execute(sql);
-			// ResultSet resultSet = statement.getResultSet();
-			// System.out.println(resultSet);
-		// } catch(SQLException e){
-			// System.out.println(e);
-// 
-		// }
-	    // Driver records require driverID, name, streetNumber, streetName, city, state, country, dob, experienceYears (int), licenseType
-	    // ResultSet results = statement.execute(arbitraryStatement);
-	    // System.out.println(results);
     }
 
