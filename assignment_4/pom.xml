@@ -13,7 +13,9 @@
 		<maven.compiler.plugin.version>3.14.1</maven.compiler.plugin.version>
 		<maven.surefire.plugin.version>3.5.4</maven.surefire.plugin.version>
 		<maven.failsafe.plugin.version>3.5.4</maven.failsafe.plugin.version>
+		<maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
 		<sqlite.db.version>3.50.3.0</sqlite.db.version>
+		<maven.shade.version>3.4.1</maven.shade.version>
 	</properties>
 
 	<dependencies>
@@ -66,6 +68,23 @@
 		</pluginManagement>
 
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugins</artifactId>
+				<version>${maven.shade.plugin.version</version>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${maven.jar.plugin.version}</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>software_engineering.App</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

@@ -11,8 +11,8 @@ public class ValidationClass{
             char c = driverID.charAt(i);
             if (c < '2' || c > '9'){
                 return false;
-	    }
-        }
+	 	}
+       	}
 
         int specialCount = 0;
         for (int i = 2; i <= 7; i++) {
@@ -70,4 +70,15 @@ public class ValidationClass{
         }
         return count == 4;
     }
+
+    public static boolean validCapacityUpdate(String busID, int newCapacity, int oldCapacity){
+           if(newCapacity > oldCapacity) {
+               System.out.println("Capacity cannot increase.");
+               return false;
+           }   
+               return true;
+       }
+
 }
+
+	
