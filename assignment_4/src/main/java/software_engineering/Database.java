@@ -232,29 +232,77 @@ public class Database {
 
 	}
 
+
 	public void addBus() {
-    Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
-    String busID;
-    while (true) {
-        System.out.print("Bus ID (8 digits, unique, or type 'exit'): ");
-        busID = scanner.nextLine();
-        if (busID.equalsIgnoreCase("exit")) return;
-        if (!ValidationClass.validBusIdString(busID)) {
-            System.out.println("Invalid Bus ID format.");
-            continue;
-        }
-		try{
-			Connection connection = this.connect();
-			if (ValidationClass.busExists(connection, busID)) {
-				System.out.println("Bus ID already exists.");
-				continue;
+			String busID;
+			try{Connection connection  = this.connect();
+				while (true) {
+					System.out.print("Bus ID (8 digits, unique, or type 'exit'): ");
+					busID = scanner.nextLine();
+					if (busID.equalsIgnoreCase("exit")) return;
+					if (!ValidationClass.validBusIdString(busID)) {
+						System.out.println("Invalid Bus ID format.");
+						continue;
+					}
+					if (ValidationClass.busExists(connection, busID)) {
+						System.out.println("Bus ID already exists.");
+						continue;
+					}
+					break;
+				}
+
+			int capacity = 0;
+			while (true) {
+				System.out.print("Capacity: ");
+				String input = scanner.nextLine();
+				if (input.equalsIgnoreCase("exit")) return;
+				try {
+					capacity = Integer.parseInt(input);
+					if (capacity > 0) break;
+					System.out.println("Capacity must be positive.");
+				} catch (NumberFormatException e) {
+					System.out.println("Enter a valid integer.");
+				}
 			}
-			break;
-		} catch(SQLException e){
-			System.out.println(e);
-		}
-	    }
-	}
-}
 
+			double fuelLevel = 0;
+			while (true) {
+				System.out.print("Fuel Level: ");
+				String input = scanner.nextLine();
+				if (input.equalsIgnoreCase("exit")) return;
+				try {
+					fuelLevel = Double.parseDouble(input);
+					if (fuelLevel >= 0) break;
+					System.out.println("Fuel Level cannot be negative.");
+				} catch (NumberFormatException e) {
+					System.out.println("Enter a valid number.");
+				}
+			}
+
+			String fuelType;
+			while (true) {
+				System.out.print("Fuel Type (Gasoline/Diesel/Electricity/Hybrid): ");
+				fuelType = scanner.nextLine();
+				if (fuelType.equalsIgnoreCase("exit")) return;
+				if (!fuelType.isEmpty()) break;
+			}
+
+			try (Connection conn = connect()) {
+				PreparedStatement stmt = conn.prepareStatement(
+						"INSERT INTO busRepo(busId, capacity, fuelLevel, fuelType) VALUES (?, ?, ?, ?)");
+				stmt.setString(1, busID);
+				stmt.setInt(2, capacity);
+				stmt.setDouble(3, fuelLevel);
+				stmt.setString(4, fuelType);
+				stmt.executeUpdate();
+				System.out.println("Bus added successfully.");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			} catch(SQLException e){
+				System.out.println(e);
+			}
+		}
+}
