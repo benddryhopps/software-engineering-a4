@@ -204,5 +204,32 @@ public class Database {
 	System.out.println(e);
 	}
 	}
+
+	public void deleteDriver() {
+    Scanner scanner = new Scanner(System.in);
+
+    String driverID;
+	try{Connection connection = this.connect();
+			while (true) {
+				System.out.print("Driver ID to delete (or type 'exit'): ");
+				driverID = scanner.nextLine();
+				if (driverID.equalsIgnoreCase("exit")) return;
+				if (ValidationClass.driverExists(connection, driverID)) break;
+				System.out.println("Driver not found.");
+			}
+
+			try (Connection conn = connect()) {
+				PreparedStatement stmt = conn.prepareStatement("DELETE FROM drivers WHERE driverID=?");
+				stmt.setString(1, driverID);
+				stmt.executeUpdate();
+				System.out.println("Driver deleted successfully.");
+			} catch (SQLException e) {
+				e.printStackTrace();
+				}
+		} catch(SQLException e){
+			System.out.println(e);
+	}
+
+}
 }
 
