@@ -381,5 +381,37 @@ public class Database {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
+	}
+
+	public void countDrivers() {
+    String sql = "SELECT COUNT(*) FROM drivers";
+
+    try (Connection conn = connect();
+         PreparedStatement stmt = conn.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+
+        if (rs.next()) {
+            System.out.println("Total drivers: " + rs.getInt(1));
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
 }
+
+public void countBuses() {
+    String sql = "SELECT COUNT(*) FROM busRepo";
+
+    try (Connection conn = connect();
+         PreparedStatement stmt = conn.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+
+        if (rs.next()) {
+            System.out.println("Total buses: " + rs.getInt(1));
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+	}
 }
