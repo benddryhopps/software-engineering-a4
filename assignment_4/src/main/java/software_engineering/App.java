@@ -76,8 +76,9 @@ public class App
             System.out.println("3. Delete Bus");
             System.out.println("4. Count Buses.");
 			System.out.println("5. List all records");
-			System.out.println("6. Exit");
-            int action = getValidatedChoice(scanner, 1, 6);
+			System.out.println("6. Assign Driver");
+			System.out.println("7. Exit");
+            int action = getValidatedChoice(scanner, 1, 7);
             switch (action) {
                 case 1:
                     db.addBus();
@@ -95,6 +96,9 @@ public class App
 					db.printTable("busRepo");
 					break;
 				case 6:
+					db.assignDriverToBus();
+					break;
+				case 7:
 					return;
             }
         }

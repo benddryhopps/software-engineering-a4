@@ -23,7 +23,7 @@ public class Database {
 	}
 
 	public void createBusRepository(){
-		String sql="create table if not exists busRepo ( busId text primary key, capacity int, fuelLevel number, fuelType text)";
+		String sql="create table if not exists busRepo ( busId text primary key, capacity int, fuelLevel number, fuelType text, driverID text default null)";
 		this.executeStatement(sql);
 
 	}
@@ -491,41 +491,100 @@ public class Database {
 	}
 
 
-	public void printTable(String tableName) {
-    try {
-        ResultSet rs = selectAll(tableName);
-        if (rs == null) return;
-        ResultSetMetaData meta = rs.getMetaData();
-        int columns = meta.getColumnCount();
-        for (int i = 1; i <= columns; i++) {
-            System.out.print(meta.getColumnName(i) + "\t");
+		public void printTable(String tableName) {
+		try {
+			ResultSet rs = selectAll(tableName);
+			if (rs == null) return;
+			ResultSetMetaData meta = rs.getMetaData();
+			int columns = meta.getColumnCount();
+			for (int i = 1; i <= columns; i++) {
+				System.out.print(meta.getColumnName(i) + "\t\t");
+			}
+			System.out.println();
+			while (rs.next()) {
+				for (int i = 1; i <= columns; i++) {
+					System.out.print(rs.getString(i) + "\t\t");
+				}
+				System.out.println();
+			}
+			rs.getStatement().getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void assignDriverToBus() {
+    Scanner scanner = new Scanner(System.in);
+
+    try (Connection conn = connect()) {
+        String busID;
+        while (true) {
+            System.out.print("Enter Bus ID (or 'exit'): \n");
+            busID = scanner.nextLine();
+            if (busID.equalsIgnoreCase("exit")) return;
+            if (ValidationClass.busExists(conn, busID)) break;
+            System.out.println("Bus not found.");
         }
-        System.out.println();
-        while (rs.next()) {
-            for (int i = 1; i <= columns; i++) {
-                System.out.print(rs.getString(i) + "\t");
-            }
-            System.out.println();
+
+        String driverID;
+        while (true) {
+            System.out.print("Enter Driver ID to assign (or 'exit'): \n");
+            driverID = scanner.nextLine();
+            if (driverID.equalsIgnoreCase("exit")) return;
+            if (ValidationClass.driverExists(conn, driverID)) break;
+            System.out.println("Driver not found.");
         }
-        rs.getStatement().getConnection();
+
+        PreparedStatement busStmt = conn.prepareStatement("SELECT capacity, fuelType FROM busRepo WHERE busId=?");
+        busStmt.setString(1, busID);
+        ResultSet busRS = busStmt.executeQuery();
+        if (!busRS.next()) return;
+        int busCapacity = busRS.getInt("capacity");
+        String fuelType = busRS.getString("fuelType");
+
+        PreparedStatement driverStmt = conn.prepareStatement(
+            "SELECT dob, experienceYears, licenseType FROM drivers WHERE driverID=?"
+        );
+        driverStmt.setString(1, driverID);
+        ResultSet driverRS = driverStmt.executeQuery();
+        if (!driverRS.next()) return;
+        String dob = driverRS.getString("dob");
+        int experience = driverRS.getInt("experienceYears");
+        String license = driverRS.getString("licenseType");
+
+        String[] dobParts = dob.split("-");
+        int birthYear = Integer.parseInt(dobParts[2]);
+        int currentYear = java.time.LocalDate.now().getYear();
+        int age = currentYear - birthYear;
+
+        if (age > 50 && busCapacity >= 50) {
+            System.out.println("Assignment failed: Driver is over 50 and cannot drive a bus with capacity >= 50.");
+            return;
+        }
+
+        if (fuelType.equalsIgnoreCase("Electricity") && experience < 5) {
+            System.out.println("Assignment failed: Driver must have at least 5 years experience for electric buses.");
+            return;
+        }
+
+        if ((fuelType.equalsIgnoreCase("Electricity") || fuelType.equalsIgnoreCase("Hybrid"))
+                && !(license.equalsIgnoreCase("Heavy") || license.equalsIgnoreCase("Public Transport"))) {
+            System.out.println("Assignment failed: Driver must have Heavy or Public Transport license.");
+            return;
+        }
+
+        PreparedStatement assignStmt = conn.prepareStatement(
+            "UPDATE busRepo SET driverID=? WHERE busId=?"
+        );
+        assignStmt.setString(1, driverID);
+        assignStmt.setString(2, busID);
+        assignStmt.executeUpdate();
+
+        System.out.println("Driver " + driverID + " successfully assigned to bus " + busID + ".");
+
     } catch (SQLException e) {
         e.printStackTrace();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
