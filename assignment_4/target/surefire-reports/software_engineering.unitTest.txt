@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: software_engineering.unitTest
 -------------------------------------------------------------------------------
-Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.185 s -- in software_engineering.unitTest
+Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.402 s -- in software_engineering.unitTest

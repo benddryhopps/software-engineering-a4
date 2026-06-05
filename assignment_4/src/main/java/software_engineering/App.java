@@ -7,7 +7,6 @@ public class App
 	Database db = new Database();
 	db.createDriverRepository();
 	db.createBusRepository();
-	db.seedDatabase();
 
         Scanner scanner = new Scanner(System.in);
 
