@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: software_engineering.ValidationClassTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.040 s -- in software_engineering.ValidationClassTest
+=======
+Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.131 s -- in software_engineering.ValidationClassTest
+>>>>>>> 0668007 (begun reorganisation of testing cases, up to task 1 test case 4)

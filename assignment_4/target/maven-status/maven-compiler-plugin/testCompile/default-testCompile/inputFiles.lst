@@ -1,3 +1,10 @@
+<<<<<<< HEAD
 C:\Users\HUNGDEPZAI\Desktop\software-engineering-a4\assignment_4\src\test\java\software_engineering\AppTest.java
 C:\Users\HUNGDEPZAI\Desktop\software-engineering-a4\assignment_4\src\test\java\software_engineering\DatabaseTest.java
 C:\Users\HUNGDEPZAI\Desktop\software-engineering-a4\assignment_4\src\test\java\software_engineering\ValidationClassTest.java
+=======
+/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/src/test/java/software_engineering/AppTest.java
+/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/src/test/java/software_engineering/DatabaseTest.java
+/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/src/test/java/software_engineering/ValidationClassTest.java
+/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/src/test/java/software_engineering/testReorganisation.java
+>>>>>>> 0668007 (begun reorganisation of testing cases, up to task 1 test case 4)

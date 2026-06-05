@@ -1,3 +1,10 @@
+<<<<<<< HEAD
 software_engineering\ValidationClassTest.class
 software_engineering\AppTest.class
 software_engineering\DatabaseTest.class
+=======
+software_engineering/DatabaseTest.class
+software_engineering/ValidationClassTest.class
+software_engineering/AppTest.class
+software_engineering/testReorganisation.class
+>>>>>>> 0668007 (begun reorganisation of testing cases, up to task 1 test case 4)

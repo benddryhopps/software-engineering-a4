@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: software_engineering.AppTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.039 s -- in software_engineering.AppTest
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in software_engineering.AppTest
+>>>>>>> 0668007 (begun reorganisation of testing cases, up to task 1 test case 4)
