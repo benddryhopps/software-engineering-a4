@@ -337,7 +337,7 @@ public class Database {
 
 			int capacity = 0;
 			while (true) {
-				System.out.print("Capacity in Litres: ");
+				System.out.print("Capacity: ");
 				String input = scanner.nextLine();
 				if (input.equalsIgnoreCase("exit")) return;
 				try {
@@ -367,21 +367,21 @@ public class Database {
 			while (true) {
 				System.out.print("Fuel Type (Gasoline/Diesel/Electricity/Hybrid): ");
 				String inputBuffer = scanner.nextLine();
-				if (List.of("Gasoline", "Diesel", "Electricity", "Hybrid").contains(inputBuffer.toLowerCase())){
+				if (List.of("gasoline", "diesel", "electricity", "hybrid").contains(inputBuffer.toLowerCase())){
 						fuelType = inputBuffer;
 				}
 				if (inputBuffer.equalsIgnoreCase("exit")){
 					fuelType = inputBuffer;
 					return;
 				}
-				if (!inputBuffer.isEmpty()){
+				else {
 				fuelType = inputBuffer;
 				break;
 				}
 			}
 			
 
-			try (Connection conn = connect()) {
+			try (Connection conn = this.connect()) {
 				PreparedStatement stmt = conn.prepareStatement(
 						"INSERT INTO busRepo(busId, capacity, fuelLevel, fuelType) VALUES (?, ?, ?, ?)");
 				stmt.setString(1, busID);
@@ -414,7 +414,7 @@ public class Database {
 			int newCapacity = 0;
 			int oldCapacity = 0;
 
-			try (Connection conn = connect()) {
+			try (Connection conn = this.connect()) {
 				PreparedStatement selectStmt = conn.prepareStatement("SELECT capacity FROM busRepo WHERE busId=?");
 				selectStmt.setString(1, busID);
 				ResultSet rs = selectStmt.executeQuery();

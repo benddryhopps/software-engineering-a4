@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="software_engineering.unitTest" time="6.117" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="software_engineering.unitTest" time="6.185" tests="19" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -13,7 +13,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="AU"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-26-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/surefire/surefirebooter-20260606043355399_3.jar /home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/surefire 2026-06-06T04-33-55_300-jvmRun1 surefire-20260606043355399_1tmp surefire_0-20260606043355399_2tmp"/>
+    <property name="sun.java.command" value="/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/surefire/surefirebooter-20260606060933264_3.jar /home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/surefire 2026-06-06T06-09-33_173-jvmRun1 surefire-20260606060933264_1tmp surefire_0-20260606060933264_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/test-classes:/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/classes:/home/benddryhopps/.m2/repository/org/junit/jupiter/junit-jupiter/5.13.0/junit-jupiter-5.13.0.jar:/home/benddryhopps/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.13.0/junit-jupiter-api-5.13.0.jar:/home/benddryhopps/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/benddryhopps/.m2/repository/org/junit/platform/junit-platform-commons/1.13.0/junit-platform-commons-1.13.0.jar:/home/benddryhopps/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/benddryhopps/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.13.0/junit-jupiter-params-5.13.0.jar:/home/benddryhopps/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.13.0/junit-jupiter-engine-5.13.0.jar:/home/benddryhopps/.m2/repository/org/junit/platform/junit-platform-engine/1.13.0/junit-platform-engine-1.13.0.jar:/home/benddryhopps/.m2/repository/org/xerial/sqlite-jdbc/3.50.3.0/sqlite-jdbc-3.50.3.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -28,7 +28,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/surefire/surefirebooter-20260606043355399_3.jar"/>
+    <property name="surefire.real.class.path" value="/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/surefire/surefirebooter-20260606060933264_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="26.0.1+8-2-25.10.2-Ubuntu"/>
     <property name="user.name" value="benddryhopps"/>
@@ -55,32 +55,119 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
+  <testcase name="taskThreeTestCaseThree" classname="software_engineering.unitTest" time="0.011">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@729d991e has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@31fa1761 has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="taskFourTestCaseOne" classname="software_engineering.unitTest" time="0.016">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@32502377 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@2c1b194a has been initialised succesfully!
+Bus ID (8 digits, unique, or type 'exit'): Capacity: Fuel Level in Litres: Fuel Type (Gasoline/Diesel/Electricity/Hybrid): Bus added successfully.
+]]></system-out>
+  </testcase>
+  <testcase name="taskFourTestCaseTwo" classname="software_engineering.unitTest" time="0.002">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@3cebbb30 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@12aba8be has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="taskThreeTestCaseFour" classname="software_engineering.unitTest" time="0.003">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@67f639d3 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@6253c26 has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="taskThreeTestCaseOne" classname="software_engineering.unitTest" time="0.004">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@71a8adcf has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@659499f1 has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="taskThreeTestCaseTwo" classname="software_engineering.unitTest" time="0.004">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@47e2e487 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@201a4587 has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="taskTwoTestCaseOneInvalidCase" classname="software_engineering.unitTest" time="0.004">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@4310d43 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@54a7079e has been initialised succesfully!
+]]></system-out>
+  </testcase>
   <testcase name="taskOneTestCaseThree" classname="software_engineering.unitTest" time="0.004">
     <system-out><![CDATA[Initialising Database instance...
-software_engineering.Database@c88a337 has been initialised succesfully!
+software_engineering.Database@47d9a273 has been initialised succesfully!
 Initialising Database instance...
-software_engineering.Database@5d0a1059 has been initialised succesfully!
+software_engineering.Database@4b8ee4de has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="taskFourTestCaseThree" classname="software_engineering.unitTest" time="0.003">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@1b11171f has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@1151e434 has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="taskTwoTestCaseOneEdgeCase" classname="software_engineering.unitTest" time="0.007">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@4659191b has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@55634720 has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="taskTwoTestCaseThree" classname="software_engineering.unitTest" time="0.015">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@4c1909a3 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@428640fa has been initialised succesfully!
 ]]></system-out>
   </testcase>
   <testcase name="taskOneTestCaseOne" classname="software_engineering.unitTest" time="0.003">
     <system-out><![CDATA[Initialising Database instance...
-software_engineering.Database@1de76cc7 has been initialised succesfully!
+software_engineering.Database@52b1beb6 has been initialised succesfully!
 Initialising Database instance...
-software_engineering.Database@54bff557 has been initialised succesfully!
+software_engineering.Database@273e7444 has been initialised succesfully!
 ]]></system-out>
   </testcase>
-  <testcase name="taskOneTestCaseFive" classname="software_engineering.unitTest" time="0.004">
+  <testcase name="taskFourTestCaseFour" classname="software_engineering.unitTest" time="0.01">
     <system-out><![CDATA[Initialising Database instance...
-software_engineering.Database@5a56cdac has been initialised succesfully!
+software_engineering.Database@783a467b has been initialised succesfully!
 Initialising Database instance...
-software_engineering.Database@7c711375 has been initialised succesfully!
+software_engineering.Database@272113c4 has been initialised succesfully!
 ]]></system-out>
   </testcase>
-  <testcase name="taskOneTestCaseFour" classname="software_engineering.unitTest" time="6.071">
+  <testcase name="taskTwoTestCaseTwo" classname="software_engineering.unitTest" time="0.011">
     <system-out><![CDATA[Initialising Database instance...
-software_engineering.Database@5b03b9fe has been initialised succesfully!
+software_engineering.Database@771a660 has been initialised succesfully!
 Initialising Database instance...
-software_engineering.Database@37d4349f has been initialised succesfully!
+software_engineering.Database@2d52216b has been initialised succesfully!
+Bus ID (8 digits, unique, or type 'exit'): Capacity: Fuel Level in Litres: Fuel Type (Gasoline/Diesel/Electricity/Hybrid): Bus added successfully.
+Capacity cannot increase.
+]]></system-out>
+  </testcase>
+  <testcase name="taskOneTestCaseFive" classname="software_engineering.unitTest" time="0.002">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@3f6f6701 has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@3527942a has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="taskOneTestCaseFour" classname="software_engineering.unitTest" time="6.055">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@1ed6388a has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@5a45133e has been initialised succesfully!
 Driver ID to update (or exit): Address part 1 (or blank to keep current): Address part 2 (or blank to keep current): Address part 3 (or blank to keep current): Address part 4 (or blank to keep current): Address part 5 (or blank to keep current): DOB (dd-mm-yyyy or blank to keep): Driver ID to update (or exit): Address part 1 (or blank to keep current): Address part 2 (or blank to keep current): Address part 3 (or blank to keep current): Address part 4 (or blank to keep current): Address part 5 (or blank to keep current): DOB (dd-mm-yyyy or blank to keep): License (blank = keep): ]]></system-out>
     <system-err><![CDATA[org.sqlite.SQLiteException: [SQLITE_BUSY] The database file is locked (database is locked)
 	at org.sqlite.core.DB.newSQLException(DB.java:1179)
@@ -92,7 +179,7 @@ Driver ID to update (or exit): Address part 1 (or blank to keep current): Addres
 	at org.sqlite.jdbc3.JDBC3PreparedStatement.executeLargeUpdate(JDBC3PreparedStatement.java:124)
 	at org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:105)
 	at software_engineering.Database.updateDriver(Database.java:279)
-	at software_engineering.unitTest.taskOneTestCaseFour(unitTest.java:119)
+	at software_engineering.unitTest.taskOneTestCaseFour(unitTest.java:121)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:787)
@@ -179,7 +266,7 @@ org.sqlite.SQLiteException: [SQLITE_BUSY] The database file is locked (database 
 	at org.sqlite.jdbc3.JDBC3PreparedStatement.executeLargeUpdate(JDBC3PreparedStatement.java:124)
 	at org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:105)
 	at software_engineering.Database.updateDriver(Database.java:279)
-	at software_engineering.unitTest.taskOneTestCaseFour(unitTest.java:120)
+	at software_engineering.unitTest.taskOneTestCaseFour(unitTest.java:122)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:787)
@@ -258,12 +345,29 @@ org.sqlite.SQLiteException: [SQLITE_BUSY] The database file is locked (database 
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 ]]></system-err>
   </testcase>
-  <testcase name="taskTwoTestCaseOneValidCase" classname="software_engineering.unitTest" time="0.029">
+  <testcase name="taskTwoTestCaseFive" classname="software_engineering.unitTest" time="0.003">
     <system-out><![CDATA[Initialising Database instance...
-software_engineering.Database@21282ed8 has been initialised succesfully!
+software_engineering.Database@3012646b has been initialised succesfully!
 Initialising Database instance...
-software_engineering.Database@437da279 has been initialised succesfully!
-Bus ID (8 digits, unique, or type 'exit'): Capacity in Litres: Fuel Level in Litres: Fuel Type (Gasoline/Diesel/Electricity/Hybrid): Bus added successfully.
+software_engineering.Database@4a883b15 has been initialised succesfully!
 ]]></system-out>
+  </testcase>
+  <testcase name="taskTwoTestCaseFour" classname="software_engineering.unitTest" time="0.002">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@7b36aa0c has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@5824a83d has been initialised succesfully!
+]]></system-out>
+  </testcase>
+  <testcase name="taskTwoTestCaseOneValidCase" classname="software_engineering.unitTest" time="0.004">
+    <system-out><![CDATA[Initialising Database instance...
+software_engineering.Database@5677323c has been initialised succesfully!
+Initialising Database instance...
+software_engineering.Database@18df8434 has been initialised succesfully!
+Bus ID (8 digits, unique, or type 'exit'): Bus ID already exists.
+Bus ID (8 digits, unique, or type 'exit'): Invalid Bus ID format.
+Bus ID (8 digits, unique, or type 'exit'): Invalid Bus ID format.
+Bus ID (8 digits, unique, or type 'exit'): Invalid Bus ID format.
+Bus ID (8 digits, unique, or type 'exit'): ]]></system-out>
   </testcase>
 </testsuite>
