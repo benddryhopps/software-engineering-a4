@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="software_engineering.unitTest" time="6.402" tests="18" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="software_engineering.unitTest" time="6.4" tests="18" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -13,7 +13,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="AU"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-26-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/surefire/surefirebooter-20260606062231862_3.jar /home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/surefire 2026-06-06T06-22-31_776-jvmRun1 surefire-20260606062231862_1tmp surefire_0-20260606062231862_2tmp"/>
+    <property name="sun.java.command" value="/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/surefire/surefirebooter-20260606075524211_3.jar /home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/surefire 2026-06-06T07-55-24_113-jvmRun1 surefire-20260606075524211_1tmp surefire_0-20260606075524211_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/test-classes:/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/classes:/home/benddryhopps/.m2/repository/org/junit/jupiter/junit-jupiter/5.13.0/junit-jupiter-5.13.0.jar:/home/benddryhopps/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.13.0/junit-jupiter-api-5.13.0.jar:/home/benddryhopps/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/benddryhopps/.m2/repository/org/junit/platform/junit-platform-commons/1.13.0/junit-platform-commons-1.13.0.jar:/home/benddryhopps/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/benddryhopps/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.13.0/junit-jupiter-params-5.13.0.jar:/home/benddryhopps/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.13.0/junit-jupiter-engine-5.13.0.jar:/home/benddryhopps/.m2/repository/org/junit/platform/junit-platform-engine/1.13.0/junit-platform-engine-1.13.0.jar:/home/benddryhopps/.m2/repository/org/xerial/sqlite-jdbc/3.50.3.0/sqlite-jdbc-3.50.3.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -28,7 +28,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/surefire/surefirebooter-20260606062231862_3.jar"/>
+    <property name="surefire.real.class.path" value="/home/benddryhopps/Documents/university/notes/_26_1/software_engineering/assignments/assignment_4/assignment_4/target/surefire/surefirebooter-20260606075524211_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="26.0.1+8-2-25.10.2-Ubuntu"/>
     <property name="user.name" value="benddryhopps"/>
@@ -55,14 +55,14 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="taskThreeTestCaseThree" classname="software_engineering.unitTest" time="0.211">
+  <testcase name="taskThreeTestCaseThree" classname="software_engineering.unitTest" time="0.202">
     <system-out><![CDATA[Initialising Database instance...
 software_engineering.Database@595b007d has been initialised succesfully!
 Initialising Database instance...
 software_engineering.Database@4562e04d has been initialised succesfully!
 ]]></system-out>
   </testcase>
-  <testcase name="taskFourTestCaseOne" classname="software_engineering.unitTest" time="0.01">
+  <testcase name="taskFourTestCaseOne" classname="software_engineering.unitTest" time="0.011">
     <system-out><![CDATA[Initialising Database instance...
 software_engineering.Database@fba92d3 has been initialised succesfully!
 Initialising Database instance...
@@ -94,28 +94,28 @@ Initialising Database instance...
 software_engineering.Database@3232a28a has been initialised succesfully!
 ]]></system-out>
   </testcase>
-  <testcase name="taskThreeTestCaseTwo" classname="software_engineering.unitTest" time="0.004">
+  <testcase name="taskThreeTestCaseTwo" classname="software_engineering.unitTest" time="0.005">
     <system-out><![CDATA[Initialising Database instance...
 software_engineering.Database@47faa49c has been initialised succesfully!
 Initialising Database instance...
 software_engineering.Database@28f2a10f has been initialised succesfully!
 ]]></system-out>
   </testcase>
-  <testcase name="taskTwoTestCaseOneInvalidCase" classname="software_engineering.unitTest" time="0.005">
+  <testcase name="taskTwoTestCaseOneInvalidCase" classname="software_engineering.unitTest" time="0.004">
     <system-out><![CDATA[Initialising Database instance...
 software_engineering.Database@6da21078 has been initialised succesfully!
 Initialising Database instance...
 software_engineering.Database@7fee8714 has been initialised succesfully!
 ]]></system-out>
   </testcase>
-  <testcase name="taskOneTestCaseThree" classname="software_engineering.unitTest" time="0.003">
+  <testcase name="taskOneTestCaseThree" classname="software_engineering.unitTest" time="0.004">
     <system-out><![CDATA[Initialising Database instance...
 software_engineering.Database@56cdfb3b has been initialised succesfully!
 Initialising Database instance...
 software_engineering.Database@2b91004a has been initialised succesfully!
 ]]></system-out>
   </testcase>
-  <testcase name="taskFourTestCaseThree" classname="software_engineering.unitTest" time="0.004">
+  <testcase name="taskFourTestCaseThree" classname="software_engineering.unitTest" time="0.003">
     <system-out><![CDATA[Initialising Database instance...
 software_engineering.Database@2fb3536e has been initialised succesfully!
 Initialising Database instance...
@@ -129,7 +129,7 @@ Initialising Database instance...
 software_engineering.Database@47987356 has been initialised succesfully!
 ]]></system-out>
   </testcase>
-  <testcase name="taskTwoTestCaseThree" classname="software_engineering.unitTest" time="0.015">
+  <testcase name="taskTwoTestCaseThree" classname="software_engineering.unitTest" time="0.022">
     <system-out><![CDATA[Initialising Database instance...
 software_engineering.Database@6283d8b8 has been initialised succesfully!
 Initialising Database instance...
@@ -143,14 +143,14 @@ Initialising Database instance...
 software_engineering.Database@18d87d80 has been initialised succesfully!
 ]]></system-out>
   </testcase>
-  <testcase name="taskFourTestCaseFour" classname="software_engineering.unitTest" time="0.004">
+  <testcase name="taskFourTestCaseFour" classname="software_engineering.unitTest" time="0.003">
     <system-out><![CDATA[Initialising Database instance...
 software_engineering.Database@58695725 has been initialised succesfully!
 Initialising Database instance...
 software_engineering.Database@543588e6 has been initialised succesfully!
 ]]></system-out>
   </testcase>
-  <testcase name="taskOneTestCaseFive" classname="software_engineering.unitTest" time="0.004">
+  <testcase name="taskOneTestCaseFive" classname="software_engineering.unitTest" time="0.003">
     <system-out><![CDATA[Initialising Database instance...
 software_engineering.Database@25fb8912 has been initialised succesfully!
 Initialising Database instance...
