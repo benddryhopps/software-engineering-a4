@@ -1,51 +1,38 @@
 package software_engineering;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ValidationClass{
 
-    public static boolean validDriverId(String driverID){
-        if (driverID.length() != 10){
-            return false;
-	}
+    public static boolean validDriverId(String driverID) {
+        if (driverID == null || driverID.length() != 10) return false;
 
         for (int i = 0; i < 2; i++) {
             char c = driverID.charAt(i);
-            if (c < '2' || c > '9'){
-                return false;
-	 	}
-       	}
+            if (c < '2' || c > '9') return false;
+        }
 
         int specialCount = 0;
         for (int i = 2; i <= 7; i++) {
             char c = driverID.charAt(i);
-            if (!Character.isLetterOrDigit(c)){
-                specialCount++;
-	    }
+            if (!Character.isLetterOrDigit(c)) specialCount++;
         }
 
-        if(specialCount < 2){
-       		if(!Character.isUpperCase(driverID.charAt(8))){
-            		return false;
-		}
-	}
+        if (specialCount < 2) return false;
 
-        if (!Character.isUpperCase(driverID.charAt(9))){
-            	return false;
-	} else {
-       		 return true;
-	}
+        if (!Character.isUpperCase(driverID.charAt(8))) return false;
+        if (!Character.isUpperCase(driverID.charAt(9))) return false;
+
+        return true;
     }
 
-    public static boolean validBusIdString(String busID){
-	    if (busID.length() != 8){
-	            return false;
-	    }
-
-        for (int i = 0; i < busID.length(); i++) {
-            if(!Character.isDigit(busID.charAt(i))){
-                return false;
-       		}
-	}
+    public static boolean validBusIdString(String busID) {
+    if (busID == null || busID.length() != 8) return false;
+    for (char c : busID.toCharArray()) {
+        if (!Character.isDigit(c)) return false;
+    }
         return true;
     }
 

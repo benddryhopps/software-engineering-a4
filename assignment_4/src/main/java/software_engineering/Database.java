@@ -1,7 +1,14 @@
 package software_engineering;
+import java.util.List;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
-import java.sql.*;
 
 
 public class Database {
@@ -28,6 +35,7 @@ public class Database {
 
 	}
 
+	// This method, and the methods called by it, are just used to provide example entries into the database
 	public void seedDatabase() {
     seedDrivers();
     seedBuses();
@@ -186,27 +194,29 @@ public class Database {
 
         pstmt.executeUpdate();
         System.out.println("Driver added successfully.");
-
+/*  */
     } catch (SQLException e) {
         e.printStackTrace();
 	    }
 	}
 
-	public void updateDriver() {
-    Scanner scanner = new Scanner(System.in);
-	try{
-		Connection connection = this.connect();
+	// using method overloading to enable unit testing with more ease.
+	public void updateDriver(){
+		updateDriver(new Scanner(System.in));
+	}
 
-		String driverID;
-		while (true) {
-			System.out.print("Driver ID to update (or type 'exit'): ");
-			driverID = scanner.nextLine();
-			if (driverID.equalsIgnoreCase("exit")) return;
-			if (ValidationClass.driverExists(connection, driverID)) break;
-			System.out.println("Driver not found.");
-		}
-
+	public void updateDriver(Scanner scanner) {
     try (Connection conn = connect()) {
+
+        String driverID;
+        while (true) {
+            System.out.print("Driver ID to update (or exit): ");
+            driverID = scanner.nextLine();
+            if (driverID.equalsIgnoreCase("exit")) return;
+            if (ValidationClass.driverExists(conn, driverID)) break;
+            System.out.println("Driver not found.");
+        }
+
         PreparedStatement selectStmt = conn.prepareStatement(
                 "SELECT * FROM drivers WHERE driverID=?");
         selectStmt.setString(1, driverID);
@@ -216,44 +226,47 @@ public class Database {
         int experienceYears = rs.getInt("experienceYears");
         String currentLicense = rs.getString("licenseType");
 
-        // Address input
-        String address;
-        String[] addressParts;
-        while (true) {
-            System.out.print("New Address (StreetNumber|StreetName|City|State|Country): ");
-            address = scanner.nextLine();
-            if (address.equalsIgnoreCase("exit")) return;
-            if (ValidationClass.validAddress(address)) {
-                addressParts = address.split("\\|");
-                break;
-            }
-            System.out.println("Invalid address format.");
+        String[] addressParts = new String[5];
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Address part " + (i + 1) + " (or blank to keep current): ");
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("exit")) return;
+            addressParts[i] = input.isBlank() ? rs.getString(
+                    switch (i) {
+                        case 0 -> "streetNumber";
+                        case 1 -> "streetName";
+                        case 2 -> "city";
+                        case 3 -> "state";
+                        default -> "country";
+                    }) : input;
         }
 
-        // DOB input
         String dob;
         while (true) {
-            System.out.print("New DOB (DD-MM-YYYY): ");
+            System.out.print("DOB (dd-mm-yyyy or blank to keep): ");
             dob = scanner.nextLine();
             if (dob.equalsIgnoreCase("exit")) return;
+            if (dob.isBlank()) {
+                dob = rs.getString("dob");
+                break;
+            }
             if (ValidationClass.validDOB(dob)) break;
-            System.out.println("Invalid DOB format.");
         }
 
-        // License update restriction
         String licenseType = currentLicense;
-        if (experienceYears <= 10) {
-            System.out.print("New License Type (leave blank to keep current): ");
+
+        if (experienceYears < 11) {
+            System.out.print("License (blank = keep): ");
             String input = scanner.nextLine();
-            if (!input.equalsIgnoreCase("exit") && !input.isEmpty()) {
+            if (!input.isBlank() && !input.equalsIgnoreCase("exit")) {
                 licenseType = input;
             }
-        } else {
-            System.out.println("License cannot be changed for drivers with >10 years experience.");
         }
 
         PreparedStatement updateStmt = conn.prepareStatement(
-                "UPDATE drivers SET streetNumber=?, streetName=?, city=?, state=?, country=?, dob=?, licenseType=? WHERE driverID=?");
+                "UPDATE drivers SET streetNumber=?, streetName=?, city=?, state=?, country=?, dob=?, licenseType=? WHERE driverID=?"
+        );
+
         updateStmt.setString(1, addressParts[0]);
         updateStmt.setString(2, addressParts[1]);
         updateStmt.setString(3, addressParts[2]);
@@ -262,22 +275,20 @@ public class Database {
         updateStmt.setString(6, dob);
         updateStmt.setString(7, licenseType);
         updateStmt.setString(8, driverID);
+
         updateStmt.executeUpdate();
         System.out.println("Driver updated successfully.");
 
     } catch (SQLException e) {
         e.printStackTrace();
     }
-} catch(SQLException e){
-	System.out.println(e);
-	}
-	}
+}
 
 	public void deleteDriver() {
     Scanner scanner = new Scanner(System.in);
 
     String driverID;
-	try{Connection connection = this.connect();
+	try(Connection connection = this.connect()){
 			while (true) {
 				System.out.print("Driver ID to delete (or type 'exit'): ");
 				driverID = scanner.nextLine();
@@ -299,13 +310,16 @@ public class Database {
 		}
 
 	}
+	
 
+	public void addBus(){
+		this.addBus(new Scanner(System.in));
+	}
 
-	public void addBus() {
-		Scanner scanner = new Scanner(System.in);
+	public void addBus(Scanner scanner) {
 
 			String busID;
-			try{Connection connection  = this.connect();
+			try(Connection connection  = this.connect()){
 				while (true) {
 					System.out.print("Bus ID (8 digits, unique, or type 'exit'): ");
 					busID = scanner.nextLine();
@@ -323,7 +337,7 @@ public class Database {
 
 			int capacity = 0;
 			while (true) {
-				System.out.print("Capacity: ");
+				System.out.print("Capacity in Litres: ");
 				String input = scanner.nextLine();
 				if (input.equalsIgnoreCase("exit")) return;
 				try {
@@ -337,7 +351,7 @@ public class Database {
 
 			double fuelLevel = 0;
 			while (true) {
-				System.out.print("Fuel Level: ");
+				System.out.print("Fuel Level in Litres: ");
 				String input = scanner.nextLine();
 				if (input.equalsIgnoreCase("exit")) return;
 				try {
@@ -352,10 +366,20 @@ public class Database {
 			String fuelType;
 			while (true) {
 				System.out.print("Fuel Type (Gasoline/Diesel/Electricity/Hybrid): ");
-				fuelType = scanner.nextLine();
-				if (fuelType.equalsIgnoreCase("exit")) return;
-				if (!fuelType.isEmpty()) break;
+				String inputBuffer = scanner.nextLine();
+				if (List.of("Gasoline", "Diesel", "Electricity", "Hybrid").contains(inputBuffer.toLowerCase())){
+						fuelType = inputBuffer;
+				}
+				if (inputBuffer.equalsIgnoreCase("exit")){
+					fuelType = inputBuffer;
+					return;
+				}
+				if (!inputBuffer.isEmpty()){
+				fuelType = inputBuffer;
+				break;
+				}
 			}
+			
 
 			try (Connection conn = connect()) {
 				PreparedStatement stmt = conn.prepareStatement(
@@ -377,7 +401,7 @@ public class Database {
 	public void updateBusCapacity() {
     	Scanner scanner = new Scanner(System.in);
 
-		try{Connection connection = this.connect();
+		try(Connection connection = this.connect()){
 			String busID;
 			while (true) {
 				System.out.print("Bus ID to update (or type 'exit'): ");
@@ -428,7 +452,7 @@ public class Database {
 	public void deleteBus() {
 	
 		Scanner scanner = new Scanner(System.in);
-		try{Connection connection = this.connect();
+		try(Connection connection = this.connect()){
 			String busID;
 			while (true) {
 				System.out.print("Bus ID to delete (or type 'exit'): ");
@@ -465,7 +489,7 @@ public class Database {
  }
 
 	public void countBuses() {
-	    String sql = "SELECT COUNT(*) FROM busRepo";
+	String sql = "SELECT COUNT(*) FROM busRepo";
 	    try (Connection conn = connect();
 	         PreparedStatement stmt = conn.prepareStatement(sql);
 	         ResultSet rs = stmt.executeQuery()) {
@@ -479,17 +503,16 @@ public class Database {
 	}
 
 	public ResultSet selectAll(String tableName) {
-	    String sql = "SELECT * FROM " + tableName;
-	    try {
-	        Connection conn = connect();
-	        Statement stmt = conn.createStatement();
-	        return stmt.executeQuery(sql);
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
+    String sql = "SELECT * FROM " + tableName;
+    try {
+        Connection conn = connect();
+        Statement stmt = conn.createStatement();
+        return stmt.executeQuery(sql);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
     return null;
-	}
-
+}
 
 		public void printTable(String tableName) {
 		try {
